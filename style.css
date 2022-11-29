@@ -1,10 +1,12 @@
 :root {
     --white: #fffbfb;
-    --grey: #f0eef1;
+    /* --grey: #f0eef1; */
+    --grey: #d6d3d1;
     --black: #050505;
     --red: #ff7070;
     --light-green: #9fff9c;
     --light-red: #ff9c9c;
+    --neutral: #fafafa;
     --border-radius: 8px;
     --spacing-xs: 5px;
     --spacing-sm: 10px;
@@ -15,6 +17,92 @@
     --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+header {
+    border: 1px solid black;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-xl);
+    background-color: var(--neutral);
+
+}
+
+button {
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    border: none;
+    font-weight: bolder;
+}
+
+.add-book-wrapper {
+    border: 1px solid black;
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    background-color: var(--grey);
+}
+
+.add-book {
+    font-size: 1.5rem;
+}
+
+/* main {
+    background-color: var(--grey);
+} */
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 0 var(--spacing-xl);
+    gap: var(--spacing-xl);
+}
+
+.single-book {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    background-color: var(--neutral);
+}
+
+.remove, .read, .not-read {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.single-book > div {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.read {
+    background-color: var(--light-green);
+}
+
+.not-read {
+    background-color: var(--light-red);
+}
+
+footer {
+
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    border: 1px solid black;
+    padding: var(--spacing-md) 0;
+
+    background-color: var(--grey);
 }

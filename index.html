@@ -31,12 +31,26 @@
                 <button class="remove">Delete</button>
             </div>
         </div>
-
     </main>
     <footer>
         Copyleft 2022 khs
     </footer>
-    <div class="modal"></div>
+    <div class="modal">
+        <div class="modal-content">
+
+            <form action="post">
+                <p>Add new book</p>
+                <input type="text" name="title" id="title" placeholder="Title">
+                <input type="text" name="author" id="author" placeholder="Author">
+                <input type="number" name="pages" id="pages" placeholder="Pages">
+                <div class="checkbox">
+                    <label for="read">Have your read it?</label>
+                    <input type="checkbox" name="read" id="read">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

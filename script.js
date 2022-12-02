@@ -33,7 +33,17 @@ function addBookToLibrary() {
   }
   const book = new Book(title.value, author.value, pages.value, read.checked);
   // add a check to see if the book is already added
-  myLibrary.push(book);
+  let isAdded = false;
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (book.title === myLibrary[i].title) {
+      isAdded = true;
+      alert("Book is already exists!");
+      break;
+    }
+  }
+  if (!isAdded) {
+    myLibrary.push(book);
+  }
 }
 
 function displayBooks() {

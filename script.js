@@ -43,6 +43,10 @@ function addBookToLibrary() {
   }
   if (!isAdded) {
     myLibrary.push(book);
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    read.checked = false;
   }
 }
 

@@ -14,6 +14,14 @@ Book.prototype.info = function () {
   }
 };
 
+Book.prototype.toggleRead = function () {
+  if (this.read) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }
+};
+
 function addBookToLibrary() {
   const title = document.querySelector("#title");
   const author = document.querySelector("#author");
@@ -31,13 +39,18 @@ function addBookToLibrary() {
   if (pages.value.length === 0) {
     pages.value = "1488";
   }
+
+  if (pages.value[0] === "-") {
+    pages.value = pages.value.slice(1);
+  }
+
   const book = new Book(title.value, author.value, pages.value, read.checked);
   // add a check to see if the book is already added
   let isAdded = false;
   for (let i = 0; i < myLibrary.length; i++) {
     if (book.title === myLibrary[i].title) {
       isAdded = true;
-      alert("Book is already exists!");
+      alert("Book already exists!");
       break;
     }
   }
@@ -63,6 +76,7 @@ function displayBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
     const singleBook = document.createElement("div");
     singleBook.setAttribute("class", "single-book");
+    // singleBook.setAttribute("data-index", i);
 
     const divTitle = document.createElement("div");
     divTitle.classList.add("title");
@@ -85,9 +99,29 @@ function displayBooks() {
       btnRead.textContent = "NOT READ";
     }
 
+    btnRead.addEventListener("click", () => {
+      myLibrary[i].toggleRead();
+      if (myLibrary[i].read) {
+        btnRead.classList.replace("not-read", "read");
+        btnRead.textContent = "READ";
+      } else {
+        btnRead.classList.replace("read", "not-read");
+        btnRead.textContent = "NOT READ";
+      }
+    });
+
     const btnRemove = document.createElement("button");
     btnRemove.classList.add("remove");
+    btnRemove.setAttribute("data-index", i);
     btnRemove.textContent = "DELETE";
+
+    btnRemove.addEventListener("click", () => {
+      // console.log(btnRemove);
+      // console.log(typeof btnRemove.getAttribute("data-index"));
+      let indexToRemove = Number(btnRemove.getAttribute("data-index"));
+      myLibrary.splice(indexToRemove, 1);
+      displayBooks();
+    });
 
     singleBook.appendChild(divTitle);
     singleBook.appendChild(divAuthor);
@@ -139,5 +173,15 @@ submitButton.addEventListener("click", (e) => {
   modal.classList.replace("visible", "not-visible");
   displayBooks();
 });
+
+// POINT 5
+// ADD REMOVE BUTTON ON EACH BOOK
+
+// const deleteButtons = document.querySelectorAll(".remove");
+// deleteButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     console.log(button);
+//   });
+// });
 // addBookToLibrary();
 // displayBooks();

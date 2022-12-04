@@ -74,7 +74,7 @@ function displayBooks() {
 
     const divPages = document.createElement("div");
     divPages.classList.add("pages");
-    divPages.textContent = myLibrary[i].pages;
+    divPages.textContent = `${myLibrary[i].pages} pages`;
 
     const btnRead = document.createElement("button");
     if (myLibrary[i].read) {
@@ -111,7 +111,6 @@ function test() {
   console.log(myLibrary);
 }
 
-
 // POINT 4
 // ADD NEW BOOK BUTTON - OPENING THE MODAL
 
@@ -131,6 +130,14 @@ window.addEventListener("click", function (e) {
   }
 });
 
+// Prevent submit button and add book to the library
 
-addBookToLibrary();
-displayBooks();
+const submitButton = document.querySelector("form>button");
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  addBookToLibrary();
+  modal.classList.replace("visible", "not-visible");
+  displayBooks();
+});
+// addBookToLibrary();
+// displayBooks();

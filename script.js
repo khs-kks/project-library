@@ -110,5 +110,27 @@ function test() {
   myLibrary.push(book);
   console.log(myLibrary);
 }
+
+
+// POINT 4
+// ADD NEW BOOK BUTTON - OPENING THE MODAL
+
+const addBookButton = document.querySelector(".add-book");
+const modal = document.querySelector(".modal");
+
+addBookButton.addEventListener("click", function () {
+  modal.classList.add("visible");
+  modal.classList.remove("not-visible");
+});
+
+// CLOSE THE MODAL IF THE FORM IS NOT CLICKED
+
+window.addEventListener("click", function (e) {
+  if (e.target === modal) {
+    modal.classList.replace("visible", "not-visible");
+  }
+});
+
+
 addBookToLibrary();
 displayBooks();

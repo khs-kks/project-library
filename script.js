@@ -1,26 +1,53 @@
 let myLibrary = [];
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+
+// refactoring
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  // METHODS
+  info() {
+    if (this.read) {
+      retun`${this.title} by blabla`;
+    } else {
+      return "blabla";
+    }
+  }
+
+  toggleRead() {
+    if (this.read) {
+      this.read = false;
+    } else {
+      this.read = true;
+    }
+  }
 }
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
 
-Book.prototype.info = function () {
-  if (this.read) {
-    return `${this.title} by ${this.author}, ${this.pages}, already read.`;
-  } else {
-    return `${this.title} by ${this.author}, ${this.pages}, not read yet.`;
-  }
-};
+// Book.prototype.info = function () {
+//   if (this.read) {
+//     return `${this.title} by ${this.author}, ${this.pages}, already read.`;
+//   } else {
+//     return `${this.title} by ${this.author}, ${this.pages}, not read yet.`;
+//   }
+// };
 
-Book.prototype.toggleRead = function () {
-  if (this.read) {
-    this.read = false;
-  } else {
-    this.read = true;
-  }
-};
+// Book.prototype.toggleRead = function () {
+//   if (this.read) {
+//     this.read = false;
+//   } else {
+//     this.read = true;
+//   }
+// };
 
 function addBookToLibrary() {
   const title = document.querySelector("#title");
